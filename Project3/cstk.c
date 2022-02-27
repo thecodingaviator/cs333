@@ -1,6 +1,16 @@
+/**
+ * Header file for the int stack
+ *
+ * Parth Parth
+ * 2/27/2022
+ */
 
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "cstk.h"
+
+int CSTK_MAX = 50;
 
 // create a stack of size size
 Stack *stk_create(int size) {
@@ -40,13 +50,13 @@ void stk_display(Stack *stk, int order) {
         for (int i = stk->top; i >= 0; i--) {
             printf("%d ", stk->stack[i]);
         }
+        printf("\n");
     }
     // if order is 0, print the stack in normal order
     else {
         for (int i = 0; i <= stk->top; i++) {
             printf("%d ", stk->stack[i]);
         }
+        printf("\n");
     }
 }
-
-extern CSTK_MAX;

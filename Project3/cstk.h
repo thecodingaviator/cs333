@@ -1,9 +1,14 @@
+/**
+ * Defining the stack structure
+ *
+ * Parth Parth
+ * 2/27/2022
+ */
+
 typedef struct stack {
     int* stack;
 	int top;
 } Stack;
-
-int CSTK_MAX = 50;
 
 Stack *stk_create(int);
 void stk_destroy (Stack*);
