@@ -42,7 +42,7 @@ def main():
     print("Searching for 16: ", search.binary_search(16))
 
 
-    ## Extension 2 done independently by Parth ##
+    ## Extension 2 done by Parth and Chandra ##
     # No inbuilt binary search function exists but we can implement it using bisect module
     # We can use bisect_left to search for the value in the list
     def BinSearch(a, x):
