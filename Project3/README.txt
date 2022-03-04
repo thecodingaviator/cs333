@@ -43,8 +43,8 @@ C:
     Extensions:
 
     1. In the cstk.c file's stk_push function, I have added the functionality for the stack 
-    to be resized if it is full. When the stack reaches its limit, it expands to twice its 
-    size.
+    to be resized if it is full (robust stack). When the stack reaches its limit, it expands
+    to twice its size.
 
     I have implemented the functionality in cstk2.c. For demonstration, I have set the 
     maximum size variable (CSTK_MAX) to 5.
