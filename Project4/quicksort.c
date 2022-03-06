@@ -16,28 +16,27 @@
   Parth Parth
   03/03/2022
 */
+
 /* the comparator function used in qsort */
 int comparator (const void *p, const void *q) {
+	int x = *(int *)p;
+	int y = *(int *)q;
 
-	// if both numbers are even, compare them in descending order
-	if ((*(int *)p % 2 == 0) && (*(int *)q % 2 == 0)) {
-		return *(int *)q - *(int *)p;
+	// if both are odd, sort in ascending order
+	if ((x % 2) && (y % 2)) {
+		return x - y;
 	}
-	// if both numbers are odd, compare them in ascending order
-	else if ((*(int *)p % 2 != 0) && (*(int *)q % 2 != 0)) {
-		return *(int *)p - *(int *)q;
+	// if both are even, sort in descending order
+	else if (!(x % 2) && !(y % 2)) {
+		return y - x;
 	}
-	// if one of the numbers is even and the other is odd, even number comes first
-	else if ((*(int *)p % 2 == 0) && (*(int *)q % 2 != 0)) {
+	// if the first is odd and the second is even, return -1
+	else if ((x % 2) && !(y % 2)) {
 		return 1;
 	}
-	// if one of the numbers is odd and the other is even, even number comes first
-	else if ((*(int *)p % 2 != 0) && (*(int *)q % 2 == 0)) {
-		return -1;
-	}
-	// if both numbers are even or odd, return 0
+	// if the first is even and the second is odd, return 1
 	else {
-		return 0;
+		return -1;
 	}
 }
 
