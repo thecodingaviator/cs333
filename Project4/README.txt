@@ -22,7 +22,14 @@ C:
         
         
     Task 2:
-        On running the program, this is what we get:
+
+        Compile:
+        gcc -o f factorial.c
+
+        Run:
+        ./f <number>
+
+        Output:
         parth@Parths-MacBook-Air Project4 % gcc -o f factorial.c
         parth@Parths-MacBook-Air Project4 % ./f 11              
         39916800
@@ -35,6 +42,7 @@ C:
         parth@Parths-MacBook-Air Project4 % ./f 15
         2004310016
 
+        Explanation:
         12! = 479001600
         13! = 12! *13 which is:
         6227020800      =      101110011001010001100110000000000 which gets 
