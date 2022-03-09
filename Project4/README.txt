@@ -2,6 +2,20 @@ CS333 - Project 4 - README
 Parth Parth
 03/04/2022
 
+File Structure:
+├── Project4
+│   ├── README.txt
+│   ├── factorial.c
+│   ├── python
+│   │   ├── task1.py
+│   │   ├── task2.py
+│   │   └── task3.py
+│   ├── quicksort.c
+│   └── r
+│       ├── task1.R
+│       ├── task2.R
+│       └── task3.R
+
 Config:
 Ubuntu 20.04.3 LTS using WSL on Windows 11 - gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
 
