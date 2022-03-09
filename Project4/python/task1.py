@@ -1,3 +1,7 @@
+# Parth Parth and Chandrachud Gowda
+# 03/09/2022
+# Demonstrate Control Flow statements
+
 def main():
   # types of if statements
   a=1
@@ -50,14 +54,14 @@ def main():
   # for loops
   # the following code will print 1-10
   for i in range(0,10):
-    print(i)
+    print(i+1)
 
   print("EG 7:")
   # while loops
   # the following code will print 1-10
   i=0
   while(i<10):
-    print(i)
+    print(i+1)
     i=i+1
 
   print("EG 8:")
