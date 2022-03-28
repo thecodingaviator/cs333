@@ -5,6 +5,7 @@
 
 #include "linkedlist.h"
 
+// creates a new LinkedList struct, initializes it, and returns it
 LinkedList *ll_create() {
   // allocate space for the linked list
   LinkedList *ll = malloc(sizeof(LinkedList));
@@ -14,6 +15,7 @@ LinkedList *ll_create() {
   return ll;
 }
 
+// adds a node to the front of the list, storing the given data in the node
 void ll_push(LinkedList *l, void *data) {
   // allocate space for a new node
   LinkedList *new = malloc(sizeof(LinkedList));
@@ -25,6 +27,7 @@ void ll_push(LinkedList *l, void *data) {
   l->next = new;
 }
 
+// removes the node at the front of the list and returns the associated data
 void *ll_pop(LinkedList *l) {
   // if the list is empty, return NULL
   if (l->next == NULL) {
@@ -41,6 +44,7 @@ void *ll_pop(LinkedList *l) {
   return data;
 }
 
+// adds a node to the end of the list, storing the given data in the node
 void ll_append(LinkedList *l, void *data) {
   // if the list is empty, push the data
   if (l->next == NULL) {
@@ -62,6 +66,8 @@ void ll_append(LinkedList *l, void *data) {
   curr->next = new;
 }
 
+// removes the first node in the list whose data matches target given the comparison function
+// and returns a pointer to the data
 void *ll_remove(LinkedList *l, void *target, int (*compfunc)(void *, void *)) {
   // if the list is empty, return NULL
   if (l->next == NULL) {
@@ -94,6 +100,7 @@ void *ll_remove(LinkedList *l, void *target, int (*compfunc)(void *, void *)) {
   return NULL;
 }
 
+// returns the size of the list
 int ll_size(LinkedList *l) {
   // if the list is empty, return 0
   if (l->next == NULL) {
@@ -110,6 +117,7 @@ int ll_size(LinkedList *l) {
   return count;
 }
 
+// removes all of the nodes from the list, freeing the associated data using the given function
 void ll_clear(LinkedList *l, void (*freefunc)(void *)) {
   // if the list is empty, return
   if (l->next == NULL) {
@@ -118,17 +126,22 @@ void ll_clear(LinkedList *l, void (*freefunc)(void *)) {
   // otherwise, loop through the list
   LinkedList *curr = l->next;
   while (curr->next != NULL) {
-    // free the data
+    // save the next pointer
+    LinkedList *next = curr->next;
+    // free the current node
     freefunc(curr->data);
-    // move to the next node
-    curr = curr->next;
+    free(curr);
+    // set the current node to the next pointer
+    curr = next;
   }
   // free the last node
   freefunc(curr->data);
-  // free the list
-  free(l);
+  free(curr);
+  // set the next pointer to NULL
+  l->next = NULL;
 }
 
+//  traverses the list and applies the given function to the data at each node
 void ll_map(LinkedList *l, void (*mapfunc)(void *)) {
   // if the list is empty, return
   if (l->next == NULL) {
