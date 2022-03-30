@@ -17,6 +17,13 @@ void printInt(void *i) {
 	printf("value: %d\n", *a);
 }
 
+// function that prints a string
+void printString(void *s) {
+	char *a = (char *)s;
+
+	printf("value: %s\n", a);
+}
+
 // function that squares an integer
 void squareInt(void *i) {
 	int *a = (int *)i;
@@ -113,6 +120,20 @@ int main(int argc, char *argv[]) {
 	ll_map(l, printInt);
 
 	printf("\nList size: %d\n", ll_size(l) );
+
+	// clear list
+	ll_clear(l, free);
+
+	// add strings to list
+	for(i=0;i<5;i++) {
+		char *s = malloc(sizeof(char) * 10);
+		sprintf(s, "string %d", i);
+		ll_append(l, s);
+	}
+
+	// print list
+	printf("\nAfter appending strings\n");
+	ll_map(l, printString);
 
 	return(0);
 }
