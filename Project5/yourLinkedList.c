@@ -158,3 +158,50 @@ void ll_map(LinkedList *l, void (*mapfunc)(void *)) {
   // call the map function on the last node
   mapfunc(curr->data);
 }
+
+// extension 1
+// delete node at specific index
+void *ll_delete(LinkedList *l, int index, void (*freefunc)(void *)) {
+  // if the list is empty, return
+  if (l->next == NULL) {
+    return NULL;
+  }
+  // if the index is 0, pop the head
+  if (index == 0) {
+    return ll_pop(l);
+  }
+  // otherwise, loop through the list
+  LinkedList *curr = l->next;
+  int count = 0;
+  while (curr->next != NULL) {
+    // if the index is the current index, remove the node
+    if (count == index) {
+      // save the data and the next pointer
+      void *data = curr->next->data;
+      LinkedList *next = curr->next->next;
+      // free the old node
+      freefunc(curr->next);
+      // set the next pointer of the current node to the next pointer
+      curr->next = next;
+      // return the data
+      return data;
+    }
+    // otherwise, move to the next node
+    curr = curr->next;
+    count++;
+  }
+  // if the index is the current index, remove the node
+  if (count == index) {
+    // save the data and the next pointer
+    void *data = curr->next->data;
+    LinkedList *next = curr->next->next;
+    // free the old node
+    freefunc(curr->next);
+    // set the next pointer of the current node to the next pointer
+    curr->next = next;
+    // return the data
+    return data;
+  }
+  // if the index is not found, return NULL
+  return NULL;
+}

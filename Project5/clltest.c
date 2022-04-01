@@ -135,5 +135,16 @@ int main(int argc, char *argv[]) {
 	printf("\nAfter appending strings\n");
 	ll_map(l, printString);
 
+	// extension 2
+	// free everything
+
+	// clear the list
+	ll_clear(l, free);
+
+	// free l, a, target
+	free(l);
+	free(a);
+	free(target);
+
 	return(0);
 }

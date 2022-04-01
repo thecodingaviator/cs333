@@ -1,3 +1,5 @@
+import time
+
 class LinkedList:
   def __init__(self):
     self.head = None
@@ -104,7 +106,6 @@ class Node:
   def __init__(self, data):
     self.data = data
     self.next = None
-    self.prev = None
 
   def __str__(self):
     return str(self.data)
@@ -146,8 +147,47 @@ def main():
   # Push a to z and then print list
   for i in range(ord('z'), ord('a') - 1, -1):
     ll.push(chr(i))
+  ll.push(2)
   print("List:", ll)
   print("Size: ", ll.getSize())
+
+  # Time code
+
+  # Create list
+  ll = LinkedList()
+
+  # Start timer
+  start = time.time()
+
+  # Add x items to list
+  x = 1_000_000
+  for i in range(10000):
+    ll.append(i)
+
+  # Stop timer
+  end = time.time()
+
+  # Print time
+  print("Time to add", x, "items:", end - start)
+
+  # Test inbuilt list
+
+  # Create list
+  ll = []
+
+  # Start timer
+  start = time.time()
+
+  # Add x items to list
+  x = 1_000_000
+  for i in range(x):
+    ll.append(i)
+
+  # Stop timer
+  end = time.time()
+
+  # Print time
+  print("Time to add", x, "items:", end - start)
 
 if __name__ == '__main__':
   main()

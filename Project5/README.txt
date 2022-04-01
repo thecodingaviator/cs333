@@ -1,20 +1,17 @@
-CS333 - Project 4 - README
+CS333 - Project 5 - README
 Parth Parth
-03/04/2022
+03/31/2022
 
 File Structure:
-├── Project5
+Project5
 │   ├── README.txt
-│   ├── factorial.c
+│   ├── clltest
+│   ├── clltest.c
+│   ├── linkedlist.h
 │   ├── python
-│   │   ├── task1.py
-│   │   ├── task2.py
-│   │   └── task3.py
-│   ├── quicksort.c
-│   └── r
-│       ├── task1.R
-│       ├── task2.R
-│       └── task3.R
+│   │   └── linkedList.py
+│   ├── r
+│   │   └── task1.R
 
 Config:
 Ubuntu 20.04.3 LTS using WSL on Windows 11 - gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
@@ -100,3 +97,9 @@ C:
         value: 4
 
         List size: 3
+
+        Extension 1:
+        I have implemented the ll_delete function that will delete a node at a given index from the list.
+
+        Extension 2:
+        I have made the clltest file leak free by freeing the variables using free().
