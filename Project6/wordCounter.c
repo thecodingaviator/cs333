@@ -25,26 +25,34 @@ char *removePunctuation(char *str)
   return newStr;
 }
 
-LinkedList *sortWordCount(LinkedList *l)
-{
-  LinkedList *curr = l;
-  LinkedList *prev = NULL;
-  LinkedList *next = NULL;
+// sort the given linkedlist in ascending order based on count
+void sortWordCount(LinkedList *l, int (*comparator)(void *, void *)) {
+  // if the list is empty, return
+  if (l->next == NULL)
+  {
+    return;
+  }
+
+  // start bubble sort
+  LinkedList *curr = l->next;
+  LinkedList *prev = l;
+  LinkedList *temp = NULL;
+
   while (curr != NULL)
   {
-    next = curr->next;
-    while (prev != NULL && wordFrequencyComparator(prev->data, curr->data) < 0)
+    temp = curr->next;
+    while (temp != NULL)
     {
-      prev->next = next;
-      curr->next = prev;
-      prev = curr;
-      curr = next;
-      next = curr->next;
+      if (comparator(curr->data, temp->data) > 0)
+      {
+        void *tempData = curr->data;
+        curr->data = temp->data;
+        temp->data = tempData;
+      }
+      temp = temp->next;
     }
-    prev = curr;
-    curr = next;
+    curr = curr->next;
   }
-  return l;
 }
 
 void main(int argc, char *argv[])
@@ -99,13 +107,38 @@ void main(int argc, char *argv[])
       wc->word = word;
       wc->count = 1;
 
-      // add the wordCount struct to the list
-      ll_push(ll, wc);
+      // check if the word is already in the list
+      wordCount *found = ll_find(ll, wc, wordCountComparator);
+
+      // print whether or not word is in the list
+      if (found == NULL)
+      {
+        // add the wordCount struct to the linked list
+        ll_push(ll, wc);
+      }
+      else
+      {
+        // increment the count
+        found->count = found->count + 1;
+        // free the wordCount struct
+        free(wc);
+      }
 
       word = strtok(NULL, " ");
     }
   }
 
-  // print the linked list
-  ll_map(ll, wordCountPrinter);
+  // sort the linked list first into alphabetic order then by count
+  sortWordCount(ll, wordCountComparator);
+  sortWordCount(ll, wordFrequencyComparator);
+
+  // print first 20 words
+  int i = 0;
+  LinkedList *curr = ll->next;
+  while (curr != NULL && i < 20)
+  {
+    wordCountPrinter(curr->data);
+    curr = curr->next;
+    i++;
+  }
 }

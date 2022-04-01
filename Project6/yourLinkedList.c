@@ -172,22 +172,15 @@ void ll_map(LinkedList *l, void (*mapfunc)(void *)) {
 }
 
 // find a node in the list whose data matches target given the comparison function
-// and returns a pointer to the node
+// and returns the data of the node
 void *ll_find(LinkedList *l, void *target, int (*compfunc)(void *, void *)) {
-  // if the list is empty, return NULL
-  if (l->next == NULL) {
-    return NULL;
-  }
-  // otherwise, loop through the list
-  LinkedList *curr = l->next;
-  while (curr->next != NULL) {
-    // if the next node is the target, return the current node
-    if (compfunc(curr->next, target) == 0) {
-      return curr;
+  // while the list is not empty
+  while (l->next != NULL) {
+    // if the current node is the target, return the data
+    if (compfunc(l->next->data, target) == 0) {
+      return l->next->data;
     }
     // otherwise, move to the next node
-    curr = curr->next;
+    l = l->next;
   }
-  // if the target was not found, return NULL
-  return NULL;
 }
