@@ -99,24 +99,12 @@ void main(int argc, char *argv[])
       wc->word = word;
       wc->count = 1;
 
-      // add the wordCount struct to the linked list
+      // add the wordCount struct to the list
       ll_push(ll, wc);
-
-      // find word in linked list
-      wordCount *wc2 = ll_find(ll, wc, wordCountComparator);
-
-      // print the word and its count
-      if (wc2 != NULL)
-      {
-        printf("%s %d\n", wc2->word, wc2->count);
-      }
 
       word = strtok(NULL, " ");
     }
   }
-
-  // sort the linked list
-  ll = sortWordCount(ll);
 
   // print the linked list
   ll_map(ll, wordCountPrinter);

@@ -26,10 +26,17 @@ void ll_push(LinkedList *l, void *data) {
   LinkedList *new = malloc(sizeof(LinkedList));
   // fill in the data
   new->data = data;
-  // set the next pointer to the current head
-  new->next = l->next;
-  // set the head to the new node
-  l->next = new;
+  
+  // if the list is empty, set the next pointer to the new node
+  if (l->next == NULL) {
+    l->next = new;
+  }
+  // otherwise, set the next pointer of the new node to the current head
+  else {
+    new->next = l->next;
+    // set the head to the new node
+    l->next = new;
+  }
 }
 
 // removes the node at the front of the list and returns the associated data
