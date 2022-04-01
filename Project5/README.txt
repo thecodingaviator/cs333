@@ -98,6 +98,8 @@ C:
 
         List size: 3
 
+
+
         Extension 1:
         I have implemented the ll_delete function that will delete a node at a given index from the list.
 

@@ -25,7 +25,7 @@ char *removePunctuation(char *str)
   return newStr;
 }
 
-LinkedList* sortWordCount(LinkedList *l)
+LinkedList *sortWordCount(LinkedList *l)
 {
   LinkedList *curr = l;
   LinkedList *prev = NULL;
@@ -85,7 +85,6 @@ void main(int argc, char *argv[])
     // loop through line
     while (word != NULL)
     {
-
       // make word lowercase
       int i = 0;
       while (word[i] != '\0')
@@ -100,20 +99,18 @@ void main(int argc, char *argv[])
       wc->word = word;
       wc->count = 1;
 
-      // search for work in the linked list
-      char *wordStruct = ll_find(ll, wc, wordCountComparator);
-      // if the word is not in the linked list
-      if (wordStruct == NULL)
+      // add the wordCount struct to the linked list
+      ll_push(ll, wc);
+
+      // find word in linked list
+      wordCount *wc2 = ll_find(ll, wc, wordCountComparator);
+
+      // print the word and its count
+      if (wc2 != NULL)
       {
-        // add the wordCount struct to the linked list
-        ll_push(ll, wc);
+        printf("%s %d\n", wc->word, wc->count);
       }
-      // otherwise, increment the count
-      else
-      {
-        wordCount *wc = (wordCount *)wordStruct;
-        wc->count++;
-      }
+
       word = strtok(NULL, " ");
     }
   }
