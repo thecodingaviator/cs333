@@ -1,3 +1,7 @@
+# Implement a linkedlist
+# Parth and Chandra
+# 3/31/2022
+
 import time
 
 class LinkedList:

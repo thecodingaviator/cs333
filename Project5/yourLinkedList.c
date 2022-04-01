@@ -1,4 +1,9 @@
-
+/**
+ * Implementing the list structure
+ *
+ * Parth Parth
+ * 3/11/2022
+ */
 
 #include <stdio.h>
 #include <stdlib.h>

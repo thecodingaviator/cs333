@@ -1,4 +1,9 @@
-
+/**
+ * Implementing the list structure
+ *
+ * Parth Parth
+ * 3/11/2022
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -170,7 +175,7 @@ void *ll_find(LinkedList *l, void *target, int (*compfunc)(void *, void *)) {
   LinkedList *curr = l->next;
   while (curr->next != NULL) {
     // if the next node is the target, return the current node
-    if (compfunc(curr->next->data, target) == 0) {
+    if (compfunc(curr->next, target) == 0) {
       return curr;
     }
     // otherwise, move to the next node
