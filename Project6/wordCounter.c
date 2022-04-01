@@ -108,7 +108,7 @@ void main(int argc, char *argv[])
       // print the word and its count
       if (wc2 != NULL)
       {
-        printf("%s %d\n", wc->word, wc->count);
+        printf("%s %d\n", wc2->word, wc2->count);
       }
 
       word = strtok(NULL, " ");
