@@ -1,3 +1,10 @@
+/**
+ * Implementing wordCount struct and functions
+ *
+ * Parth Parth
+ * 4/3/2022
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

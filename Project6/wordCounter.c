@@ -1,3 +1,10 @@
+/**
+ * Implementing the File I/O functions
+ *
+ * Parth Parth
+ * 4/3/2022
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -57,6 +64,8 @@ void sortWordCount(LinkedList *l, int (*comparator)(void *, void *)) {
 
 void main(int argc, char *argv[])
 {
+
+  // Extension 1: Check for file existence and readability
   // check for correct number of arguments
   if (argc != 2)
   {
@@ -128,8 +137,7 @@ void main(int argc, char *argv[])
     }
   }
 
-  // sort the linked list first into alphabetic order then by count
-  sortWordCount(ll, wordCountComparator);
+  // sort the linked list
   sortWordCount(ll, wordFrequencyComparator);
 
   // print first 20 words
