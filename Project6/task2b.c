@@ -24,7 +24,6 @@ void main() {
   signal(SIGFPE, handler);
   
   // cause a floating point exception
-  double a = 1.0;
-
-  printf("%f\n", a / 0.0);
+  int a = 1.0;
+  a = a / 0;
 }
