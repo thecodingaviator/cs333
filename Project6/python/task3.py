@@ -13,10 +13,13 @@ def main():
     print(number)
     # Close the file
     fd.close()
+  # Handle an IOError
   except IOError:
     print("File not found")
+  # Handle a ValueError
   except ValueError:
     print("Invalid data")
+  # Handle everything else
   except:
     print("Unknown error")
 

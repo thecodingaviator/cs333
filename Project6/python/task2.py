@@ -45,16 +45,16 @@ def main():
     # Write the first byte to the file
     outfile.write(byte)
 
+    # Close the files
+    infile.close()
+    outfile.close()
+
     # Open a URL
     infile = urlopen('https://www.stackoverflow.com')
 
     # Read the lines and print them
     for line in infile:
         print(line)
-
-    # Close the files
-    infile.close()
-    outfile.close()
 
 if __name__ == "__main__":
     main()

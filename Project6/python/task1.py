@@ -2,15 +2,6 @@
 # 04/03/2022
 # Python program to read a file, count the frequency of words and display the top 20 words
 
-# Class to store the word and its frequency
-class Word:
-  def __init__(self, word, count):
-    self.word = word
-    self.count = count
-
-  def __str__(self):
-    return self.word + " " + str(self.count)
-
 # Class to read the file and store words in a dictionary
 class FileReader:
   def __init__(self, filename):
