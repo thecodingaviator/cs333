@@ -16,6 +16,9 @@ File Structure:
 │   │   ├── task3.py
 │   │   ├── test.txt
 │   │   └── testerr.txt
+│   ├── r
+│   │   ├── extension_2.R
+│   │   ├── word_counter.R
 │   ├── task2a.c
 │   ├── task2b.c
 │   ├── task2c.c
