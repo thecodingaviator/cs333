@@ -1,9 +1,11 @@
 Flat profile:
 
 Each sample counts as 0.01 seconds.
+ no time accumulated
+
   %   cumulative   self              self     total           
- time   seconds   seconds    calls  ms/call  ms/call  name    
-101.73      0.22     0.22       10    22.38    22.38  func2
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00        1     0.00     0.00  func1
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -41,15 +43,11 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 2 byte(s) for 4.47% of 0.22 seconds
+granularity: each sample hit covers 2 byte(s) no time propagated
 
 index % time    self  children    called     name
-                0.22    0.00      10/10          main [2]
-[1]    100.0    0.22    0.00      10         func2 [1]
------------------------------------------------
-                                                 <spontaneous>
-[2]    100.0    0.00    0.22                 main [2]
-                0.22    0.00      10/10          func2 [1]
+                0.00    0.00       1/1           main [8]
+[1]      0.0    0.00    0.00       1         func1 [1]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -142,4 +140,4 @@ notice and this notice are preserved.
 
 Index by function name
 
-   [1] func2
+   [1] func1

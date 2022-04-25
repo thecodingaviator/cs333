@@ -12,20 +12,23 @@
 
 // for task a
 void func1() {
-  long x;
-  // allocate memory for x
-  for(int i=0; i<100000000; i++) {
-    x = malloc(sizeof(long));
+  // start time
+  clock_t start = clock();
+  for(int i=0; i<100000; i++) {
+    int *array = (int*) malloc(100000 * sizeof(int));
   }
+  // end time
+  clock_t end = clock();
+  // time taken
+  double time_taken = ((double) (end - start)) / CLOCKS_PER_SEC;
+  printf("Time taken for call: %f\n", time_taken);
 }
 
 // for task b
 void func2() {
-  short* x;
-  // allocate memory and free it for x
-  for(int i=0; i<1000000000; i++) {
-    x = (short *) malloc(sizeof(short));
-    free(x);
+  for(int i=0; i<100000; i++) {
+    int *array = (int*) malloc(100000 * sizeof(int));
+    free(array);
   }
 }
 
