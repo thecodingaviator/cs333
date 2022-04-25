@@ -45,7 +45,7 @@ C:
                 Dropping the smallest and highest time and averaging them,
                 we get: 0.004141s for 100000 arrays.
 
-            medium: Array of 1000 ints.
+            medium: Array of 1,000 ints.
 
                 parth@DESKTOP-1VEVFJK:~/cs333/Project7$ ./task
                 Time taken for call: 0.196502
@@ -78,7 +78,9 @@ C:
                 we get: 0.216723s for 100000 arrays.
 
             It can be thus concluded that the bigger the chunk of memory, 
-            the longer it takes to allocate memory for it
+            the longer it takes to allocate memory for it. This is because it just
+            takes longer for C to allocate larger chunks of memory/mark larger chunks
+            as allocated.
 
             Extension 1:
 
@@ -106,6 +108,46 @@ C:
             To time the code for this task, I have measured time by counting CPU clocks
             and dividing by the number of CPU clocks per second.
 
-            
+            small: Array of 10 ints.
+                Time taken for call 1: 0.001601
+                Time taken for call 2: 0.001719
+                Time taken for call 3: 0.001405
+                Time taken for call 4: 0.001342
+                Time taken for call 5: 0.001140
+                Time taken for call 6: 0.001383
+                Time taken for call 7: 0.001605
+                Time taken for call 8: 0.001539
+                Time taken for call 9: 0.001651
+                Time taken for call 10: 0.001492
 
+            medium: Array of 1,000 ints.
+                parth@DESKTOP-1VEVFJK:~/cs333/Project7$ ./task
+                Time taken for call 1: 0.003138
+                Time taken for call 2: 0.002975
+                Time taken for call 3: 0.002983
+                Time taken for call 4: 0.003115
+                Time taken for call 5: 0.004581
+                Time taken for call 6: 0.006730
+                Time taken for call 7: 0.007251
+                Time taken for call 8: 0.005332
+                Time taken for call 9: 0.004301
+                Time taken for call 10: 0.004970
+
+            large: Array of 100,000 ints.
+                parth@DESKTOP-1VEVFJK:~/cs333/Project7$ ./task
+                Time taken for call 1: 0.002913
+                Time taken for call 2: 0.002531
+                Time taken for call 3: 0.004375
+                Time taken for call 4: 0.007323
+                Time taken for call 5: 0.006507
+                Time taken for call 6: 0.005803
+                Time taken for call 7: 0.007814
+                Time taken for call 8: 0.006167
+                Time taken for call 9: 0.006902
+                Time taken for call 10: 0.005441
+
+            It is observed that the time taken goes up from the first call before
+            dropping back towards the end. However, the time taken for the last call
+            still remains higher than the time taken for the first call. This might be
+            because 
             
