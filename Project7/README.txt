@@ -146,8 +146,10 @@ C:
                 Time taken for call 9: 0.006902
                 Time taken for call 10: 0.005441
 
-            It is observed that the time taken goes up from the first call before
-            dropping back towards the end. However, the time taken for the last call
-            still remains higher than the time taken for the first call. This might be
-            because 
+            For the small size, the times are almost the same. however, for the
+            other two sizes, times go up to 1.5x for medium and 2x for large. I
+            talked to Stephanie about it and we do not have any idea of what's going
+            on.
+
+            When comparing sizes, it takes more time as the sizes increase.
             
