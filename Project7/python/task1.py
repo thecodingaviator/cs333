@@ -8,17 +8,13 @@ def main():
   b = 5
   c = a
 
+  print("a: ", a)
   # All statements that release memory
-  a = None
-  print("Before a is set to None")
-  print("a:", a) # Should print nothing
-  print("After a is set to None")
+  del a
+  # If I try to print a, it will throw an error
+  #print(a)
 
-  b = None
-  c = None
-
-  print("b:", b)
-  print("c:", c)
+  print("c: ", c)
 
   a = 40      # Create object <40>
   b = a       # Increase ref. count  of <40>

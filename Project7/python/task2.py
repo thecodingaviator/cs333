@@ -2,21 +2,23 @@
 # Parth and Chandra
 # 4/25/2022
 
-class Point:
-  def __init__( self, x=0, y=0):
-      self.x = x
-      self.y = y
+# Import time
+import time
 
-  def __del__(self):
-      class_name = self.__class__.__name__
-      print (class_name, "destroyed")
+def memory():
+    # Start timer
+    start = time.time()
 
-pt1 = Point()
-pt2 = pt1
-pt3 = pt1
-print(id(pt1), id(pt2), id(pt3)) # prints the ids of the obejcts
-del pt1
-print(id(pt2)) # even though pt1 has been deleted, pt2 is still alive
-del pt2
-del pt3
-print(id(pt1), id(pt2), id(pt3)) # should throw NameError
+    # Create a list of 1,000,000 integers 15 times
+    for i in range(15):
+        local = start
+        l = [k for k in range(1000000)]
+        start = time.time()
+        # Print lapsed time
+        print("Time at mk 1 ", i, ": ", start - local)
+        start = local
+
+if __name__ == "__main__":
+    memory()
+    print("\nSecond call:\n")
+    memory()
