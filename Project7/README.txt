@@ -3,7 +3,24 @@ Parth Parth
 04/17/2022
 
 File Structure:
-
+├── Project7
+│   ├── README.txt
+│   ├── profiler
+│   │   ├── analysislarge1.txt
+│   │   ├── analysislarge2.txt
+│   │   ├── analysislarge3.txt
+│   │   ├── analysislarge4.txt
+│   │   ├── analysislarge5.txt
+│   │   ├── gmon.out
+│   │   └── task_deprecated.c
+│   ├── python
+│   │   ├── task1.py
+│   │   └── task2.py
+│   ├── r
+│   │   ├── mm.R
+│   │   └── mm.R:Zone.Identifier
+│   ├── task
+│   └── task.c
 
 Config:
 Ubuntu 20.04.3 LTS using WSL 2 on Windows 11 - gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1) 
