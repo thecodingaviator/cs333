@@ -28,6 +28,8 @@ void *colorize(void *arg)
   int start = thread->start;
   int end = thread->end;
 
+  printf("Thread %d: %d to %d\n", thread->id, start, end);
+
   // process image
   for (int i = start*cols; i < end * cols; i++)
   {
@@ -45,7 +47,7 @@ int main(int argc, char *argv[])
   // check usage
   if (argc < 2)
   {
-    printf("Usage: %s <image filename>\n", argv[0]);
+    printf("Usage: %s <image filename> <optional number of threads. default = 4>\n", argv[0]);
     exit(-1);
   }
 
@@ -55,6 +57,13 @@ int main(int argc, char *argv[])
   {
     printf("Unable to read file %s\n", argv[1]);
     exit(-1);
+  }
+
+  // extension 1: number of threads
+  // if there is a second argument, use that as the number of threads
+  if (argc > 2)
+  {
+    NUMTHREADS = atoi(argv[2]);
   }
 
   // calculate division of work
