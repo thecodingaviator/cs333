@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ppmIO.h"
-#include "my_timing.h"
+#include "my_timing.c"
 
 int main(int argc, char *argv[]) {
 	Pixel *src;

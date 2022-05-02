@@ -27,9 +27,7 @@ void *colorize(void *arg)
   ColorizeThread *thread = (ColorizeThread *)arg;
   int start = thread->start;
   int end = thread->end;
-
-  printf("Thread %d: %d to %d\n", thread->id, start, end);
-
+  
   // process image
   for (int i = start*cols; i < end * cols; i++)
   {
