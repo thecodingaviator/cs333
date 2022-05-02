@@ -30,7 +30,7 @@ typedef struct {
 // method to return the leading digit of a double
 int leadingDigit(double n)
 {
-  while(floor(fabs(n)) > 10)
+  while(floor(fabs(n)) >= 10)
   {
     n /= 10;
   }

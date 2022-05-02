@@ -1,5 +1,5 @@
 /**
- * Global Counter Array no Mutex
+ * Global Counter Array grouoed by threads no Mutex
  *
  * Parth Parth
  * 4/4/2022
@@ -28,7 +28,7 @@ typedef struct {
 // method to return the leading digit of a double
 int leadingDigit(double n)
 {
-  while(floor(fabs(n)) > 10)
+  while(floor(fabs(n)) >= 10)
   {
     n /= 10;
   }
@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
 
   ThreadInfo info[4];
 
-  int final_counts[10];
+  int final_counts[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
   for(int i=0; i<40; i++)
   {
@@ -130,12 +130,7 @@ int main(int argc, char *argv[])
   //loop through the global counts
   for(int i=0; i<40; i++)
   {
-    // get the count from the global counts
-    int count = global_counts[i];
-    int digit = i % 10;
-    // add the count to the final counts
-    final_counts[digit] += count;
-    printf("%d\t%d\n", digit, count);
+    final_counts[i % 10] += global_counts[i];
   }
 
   // end time

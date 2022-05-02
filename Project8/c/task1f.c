@@ -1,5 +1,5 @@
 /**
- * Global Counter Array Protected by Single Mutex
+ * Global Counter Array grouped by digit no Mutex
  *
  * Parth Parth
  * 4/4/2022
@@ -13,9 +13,7 @@
 #include <string.h>
 
 // global counter array
-int global_counts[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-// global mutex
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+int global_counts[40];
 // global data
 double *data;
 // global N
@@ -62,15 +60,13 @@ int loadData(char *filename)
 void *count(void *arg)
 {
   ThreadInfo *info = (ThreadInfo *)arg;
+  int id = info->id;
   for(int i = info->start; i < info->end; i++)
   {
     // get the leading digit
     int digit = leadingDigit(data[i]);
-
-    // increment the counter
-    pthread_mutex_lock(&mutex);
-    global_counts[digit]++;
-    pthread_mutex_unlock(&mutex);
+    // increment the counter in the global array grouped by digit
+    global_counts[digit * 4 + id]++;
   }
 
   pthread_exit(NULL);
@@ -96,6 +92,13 @@ int main(int argc, char *argv[])
   }
 
   ThreadInfo info[4];
+
+  int final_counts[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+  for(int i=0; i<40; i++)
+  {
+    global_counts[i] = 0;
+  }
 
   // create threads
   pthread_t threads[4];
@@ -123,6 +126,14 @@ int main(int argc, char *argv[])
     pthread_join(threads[i], NULL);
   }
 
+  // sum up the global counts
+  // loop through the global counts
+  for(int i=0; i<40; i++)
+  {
+    // increment the counter in the global array grouped by digit
+    final_counts[i / 4] += global_counts[i];
+  }
+
   // end time
   t2 = get_time_sec();
 
@@ -132,7 +143,7 @@ int main(int argc, char *argv[])
   printf("-----\t-----\n");
   for (int i = 0; i < 10; i++)
   {
-    printf("%d\t%d\n", i, global_counts[i]);
+    printf("%d\t%d\n", i, final_counts[i]);
   }
 
   // print time

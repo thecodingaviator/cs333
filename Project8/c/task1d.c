@@ -31,7 +31,7 @@ typedef struct {
 // method to return the leading digit of a double
 int leadingDigit(double n)
 {
-  while(floor(fabs(n)) > 10)
+  while(floor(fabs(n)) >= 10)
   {
     n /= 10;
   }
@@ -75,12 +75,9 @@ void *count(void *arg)
   // add the local counts to the global counts
   for(int i=0; i<10; i++)
   {
-    // get digit from local array
-    int digit = info->local_counts[i];
-    // increment the counter
-    pthread_mutex_lock(&mutex[digit]);
-    global_counts[digit]++;
-    pthread_mutex_unlock(&mutex[digit]);
+    pthread_mutex_lock(&mutex[i]);
+    global_counts[i] += info->local_counts[i];
+    pthread_mutex_unlock(&mutex[i]);
   }
 
   pthread_exit(NULL);
