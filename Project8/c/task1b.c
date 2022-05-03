@@ -15,7 +15,18 @@
 // global counter array
 int global_counts[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 // global mutex array
-pthread_mutex_t global_mutexes[10] = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t global_mutexes[10] = {
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER
+};
 // global data
 double *data;
 // global N
