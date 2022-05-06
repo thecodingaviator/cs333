@@ -16,7 +16,7 @@ C:
     All of the programming files for this task are in the c folder.
 
     Compile:
-    gcc -o task task1f.c my_timing.c -lm -lpthread
+    gcc -o task task1<part serial>.c my_timing.c -lm -lpthread
 
     Run:
     ./task <filename>
@@ -44,13 +44,15 @@ C:
       will only be updated in the end. Therefore, it is a good idea to use mutexes in cases where
       the threads are doing something separate for a lot of time.
 
+      Extension 1: I used a padded int for task1e.c
+
   2.
 
     For this C programming task, I have created the colorizer in parallel.
     All files for this task are in the kit folder.
     
     To select the number of threads, use the optional command line argument.
-    The default is 4. (Extension 1)
+    The default is 4. (Extension 2)
 
     Compile:
     gcc -o colorize -I. colorize_parallel.c my_timing.c ppmIO.c -lm -lpthread

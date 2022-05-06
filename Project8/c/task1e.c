@@ -12,14 +12,22 @@
 #include <math.h>
 #include <string.h>
 
+// extension 1 struct for padded int
+typedef struct
+{
+  int value;
+  char padding[60];
+} padded_int;
+
 // global counter array
-int global_counts[40];
+padded_int global_counts[40];
 // global data
 double *data;
 // global N
 int N;
 
-typedef struct {
+typedef struct
+{
   int id;
   int start;
   int end;
@@ -28,7 +36,7 @@ typedef struct {
 // method to return the leading digit of a double
 int leadingDigit(double n)
 {
-  while(floor(fabs(n)) >= 10)
+  while (floor(fabs(n)) >= 10)
   {
     n /= 10;
   }
@@ -61,12 +69,12 @@ void *count(void *arg)
 {
   ThreadInfo *info = (ThreadInfo *)arg;
   int id = info->id;
-  for(int i = info->start; i < info->end; i++)
+  for (int i = info->start; i < info->end; i++)
   {
     // get the leading digit
     int digit = leadingDigit(data[i]);
     // increment the counter
-    global_counts[id * 10 + digit]++;
+    global_counts[id * 10 + digit].value++;
   }
 
   pthread_exit(NULL);
@@ -95,16 +103,16 @@ int main(int argc, char *argv[])
 
   int final_counts[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-  for(int i=0; i<40; i++)
+  for (int i = 0; i < 40; i++)
   {
-    global_counts[i] = 0;
+    global_counts[i].value = 0;
   }
 
   // create threads
   pthread_t threads[4];
 
   // set thread info
-  for(int i = 0; i < 4; i++)
+  for (int i = 0; i < 4; i++)
   {
     info[i].id = i;
     info[i].start = floor(i * (N / 4.0));
@@ -115,22 +123,22 @@ int main(int argc, char *argv[])
   t1 = get_time_sec();
 
   // create threads
-  for(int i = 0; i < 4; i++)
+  for (int i = 0; i < 4; i++)
   {
     pthread_create(&threads[i], NULL, count, &info[i]);
   }
 
   // join threads
-  for(int i = 0; i < 4; i++)
+  for (int i = 0; i < 4; i++)
   {
     pthread_join(threads[i], NULL);
   }
 
   // sum up the global counts
-  //loop through the global counts
-  for(int i=0; i<40; i++)
+  // loop through the global counts
+  for (int i = 0; i < 40; i++)
   {
-    final_counts[i % 10] += global_counts[i];
+    final_counts[i % 10] += global_counts[i].value;
   }
 
   // end time

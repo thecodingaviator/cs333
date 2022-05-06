@@ -15,13 +15,24 @@
 // global counts array
 int global_counts[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 // global mutex array
-pthread_mutex_t mutex[10] = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex[10] = {
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER,
+    PTHREAD_MUTEX_INITIALIZER};
 // global data
 double *data;
 // global N
 int N;
 
-typedef struct {
+typedef struct
+{
   int id;
   int start;
   int end;
@@ -31,7 +42,7 @@ typedef struct {
 // method to return the leading digit of a double
 int leadingDigit(double n)
 {
-  while(floor(fabs(n)) >= 10)
+  while (floor(fabs(n)) >= 10)
   {
     n /= 10;
   }
@@ -63,7 +74,7 @@ int loadData(char *filename)
 void *count(void *arg)
 {
   ThreadInfo *info = (ThreadInfo *)arg;
-  for(int i = info->start; i < info->end; i++)
+  for (int i = info->start; i < info->end; i++)
   {
     // get the leading digit
     int digit = leadingDigit(data[i]);
@@ -73,7 +84,7 @@ void *count(void *arg)
   }
 
   // add the local counts to the global counts
-  for(int i=0; i<10; i++)
+  for (int i = 0; i < 10; i++)
   {
     pthread_mutex_lock(&mutex[i]);
     global_counts[i] += info->local_counts[i];
@@ -108,12 +119,12 @@ int main(int argc, char *argv[])
   pthread_t threads[4];
 
   // set thread info
-  for(int i = 0; i < 4; i++)
+  for (int i = 0; i < 4; i++)
   {
     info[i].id = i;
     info[i].start = floor(i * (N / 4.0));
     info[i].end = floor((i + 1) * (N / 4.0));
-    for(int j = 0; j < 10; j++)
+    for (int j = 0; j < 10; j++)
     {
       info[i].local_counts[j] = 0;
     }
@@ -123,13 +134,13 @@ int main(int argc, char *argv[])
   t1 = get_time_sec();
 
   // create threads
-  for(int i = 0; i < 4; i++)
+  for (int i = 0; i < 4; i++)
   {
     pthread_create(&threads[i], NULL, count, &info[i]);
   }
 
   // join threads
-  for(int i = 0; i < 4; i++)
+  for (int i = 0; i < 4; i++)
   {
     pthread_join(threads[i], NULL);
   }

@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     exit(-1);
   }
 
-  // extension 1: number of threads
+  // extension 2: number of threads
   // if there is a second argument, use that as the number of threads
   if (argc > 2)
   {
